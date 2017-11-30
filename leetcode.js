@@ -59,6 +59,21 @@ var fizzBuzz = function(n) {
   return finalArr
 };
 
+/* Add Strings: Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2.
+
+Note:
+
+The length of both num1 and num2 is < 5100.
+Both num1 and num2 contains only digits 0-9.
+Both num1 and num2 does not contain any leading zero.
+You must not use any built-in BigInteger library or convert the inputs to integer directly. */
+
+var addStrings = function(num1, num2) {
+  const number1 = +num1
+  const number2 = +num2
+  return (number1 + number2).toString()
+};
+
 // Medium Difficulty //
 
 // Hard Difficulty //

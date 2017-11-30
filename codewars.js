@@ -131,6 +131,41 @@ function disemvowel(str) {
   return str.replace(/[aeiou]/gi, '');
 }
 
+/* You're a Square!: A square of squares
+
+You like building blocks. You especially like building blocks that are squares. And what you even like more, is to arrange them into a square of square building blocks!
+
+However, sometimes, you can't arrange them into a square. Instead, you end up with an ordinary rectangle! Those blasted things! If you just had a way to know, whether you're currently working in vain… Wait! That's it! You just have to check if your number of building blocks is a perfect square.
+
+Task
+
+Given an integral number, determine if it's a square number:
+
+In mathematics, a square number or perfect square is an integer that is the square of an integer; in other words, it is the product of some integer with itself.
+The tests will always use some integral number, so don't worry about that in dynamic typed languages.
+
+Examples
+
+isSquare(-1) // => false
+isSquare( 3) // => false
+isSquare( 4) // => true
+isSquare(25) // => true
+isSquare(26) // => false */
+
+var isSquare = function(n){
+  var sqRt = Math.sqrt(n);
+  if (Number.isInteger(sqRt)) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+function isSquare(n) {
+  return Math.sqrt(n) % 1 === 0;
+}
+
 // 8 kyu problems //
 
 /* Even or Odd - Create a function that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers. */
@@ -250,4 +285,38 @@ function makeNegative(num) {
 
 function makeNegative(num) {
   return -Math.abs(num);
+}
+
+/* Convert boolean values to strings 'Yes' or 'No': Given: a boolean value
+
+Return: a 'Yes' string for true and a 'No' string for false */
+
+function boolToWord( bool ){
+  if (bool === true) {
+  return "Yes";
+  };
+  if (bool != true) {
+  return "No"
+  };
+}
+
+function boolToWord( bool ){
+  return bool ? 'Yes':'No';
+}
+
+/* String Repeat: Write a function called repeatStr which repeats the given string string exactly n times.
+
+repeatStr(6, "I") // "IIIIII"
+repeatStr(5, "Hello") // "HelloHelloHelloHelloHello" */
+
+function repeatStr (n, s) {
+  var strArr = []
+  for (var i = 0; i < n; i++){
+    strArr.push(s);
+  }
+  return strArr.join("");
+}
+
+function repeatStr (n, s) {
+  return s.repeat(n);
 }
