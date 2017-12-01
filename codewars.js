@@ -320,3 +320,70 @@ function repeatStr (n, s) {
 function repeatStr (n, s) {
   return s.repeat(n);
 }
+
+/* Square(n) Sum: Complete the squareSum/square_sum/SquareSum method so that it squares each number passed into it and then sums the results together.
+
+For example:
+
+squareSum([1, 2, 2]); // should return 9 */
+
+function squareSum(numbers){
+  var sum = 0;
+  for (i = 0; i < numbers.length; i++) {
+    var number = numbers[i];
+    var squared = number * number;
+    sum += squared;
+    }
+  return sum;
+}
+
+function squareSum(numbers){
+  return numbers.reduce(function(sum, n){
+    return (n*n) + sum;
+  }, 0)
+}
+
+/* Convert a String to a Number!: We need a function that can transform a string into a number. What ways of achieving this do you know?
+
+Note: Don't worry, all inputs will be strings, and every string is a perfectly valid representation of an integral number.
+
+Examples
+
+stringToNumber("1234") == 1234
+stringToNumber("605" ) == 605
+stringToNumber("1405") == 1405
+stringToNumber("-7"  ) == -7 */
+
+var stringToNumber = function(str){
+  var num = parseInt(str);
+  return num;
+}
+
+var stringToNumber = function(str){
+  return +str;
+}
+
+/* Sum of positive: You get an array of numbers, return the sum of all of the positives ones.
+
+Example [1,-4,7,12] => 1 + 7 + 12 = 20
+
+Note: array may be empty, in this case return 0. */
+
+function positiveSum(arr) {
+  var sum=0;
+  for(var i=0;i<arr.length;i++) {
+    if(arr[i]>0) {
+      sum+=arr[i];
+    }
+  return sum;
+}
+
+function positiveSum(arr) {
+  var total = 0;
+  for (i = 0; i < arr.length; i++) {
+    if (arr[i] > 0) {
+      total += arr[i];
+    }
+  }
+  return total;
+}
