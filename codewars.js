@@ -387,3 +387,66 @@ function positiveSum(arr) {
   }
   return total;
 }
+
+/* A Needle in the Haystack: Can you find the needle in the haystack?
+
+Write a function findNeedle() that takes an array full of junk but containing one "needle"
+
+After your function finds the needle it should return a message (as a string) that says:
+
+"found the needle at position " plus the index it found the needle */
+
+function findNeedle(haystack) {
+  for (var i=0; i<haystack.length; i++) {
+    if (haystack[i] === 'needle') {
+      return 'found the needle at position ' + i;
+    }
+  }
+}
+
+function findNeedle(haystack) {
+  return "found the needle at position " + haystack.indexOf("needle");
+}
+
+/* Are you playing banjo?: Create a function which answers the question "Are you playing banjo?".
+If your name starts with the letter "R" or lower case "r", you are playing banjo!
+
+The function takes a name as its only argument, and returns one of the following strings:
+
+name + " plays banjo"
+name + " does not play banjo"
+Names given are always valid strings. */
+
+function areYouPlayingBanjo(name) {
+  var rletter = "R r".split(" ")
+  for (var i = 0; i<name.length; i++) {
+    var letters = name[i];
+    if (rletter.indexOf(letters[0]) !== -1) {
+      return name + " plays banjo";
+    } else {
+      return name + " does not play banjo";
+    }
+  }
+}
+
+function areYouPlayingBanjo(name) {
+  return name + (name[0].toLowerCase() == 'r' ? ' plays' : ' does not play') + " banjo";
+}
+
+/* Grasshopper: Summation: Write a program that finds the summation of every number between 1 and num. The number will always be a positive integer greater than 0.
+
+For example:
+
+summation(2) -> 3
+1 + 2
+
+summation(8) -> 36
+1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 */
+
+var summation = function (num) {
+  let result = 0;
+  for (var i = 1; i <= num; i++) {
+    result += i;
+  }
+  return result;
+}

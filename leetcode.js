@@ -104,6 +104,53 @@ var findTheDifference = function(s, t) {
     }
 };
 
+/* Reverse Integer: Given a 32-bit signed integer, reverse digits of an integer.
+
+Example 1:
+
+Input: 123
+Output:  321
+Example 2:
+
+Input: -123
+Output: -321
+Example 3:
+
+Input: 120
+Output: 21
+Note:
+Assume we are dealing with an environment which could only hold integers within the 32-bit signed integer range. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows. */
+
+var reverse = function(x) {
+  const xStr = x.toString()
+  let arr = xStr.split('')
+  let negative = undefined
+  let filtered = []
+  if (arr[0] === '-') {
+    arr = arr.slice(1)
+    negative = true
+  }
+  const reversedArr = arr.reverse()
+  for (let i = 0; i < reversedArr.length; i++) {
+    if (+reversedArr[i] > 0) {
+      filtered = reversedArr.slice(0, i+1)
+    }
+  }
+
+  if (negative && (-(+filtered.join('')) < -2147483647)) {
+    return 0
+  }
+  else if (negative) {
+    return -(+filtered.join(''))
+  }
+  else if (+filtered.join('') > 2147483647) {
+    return 0
+  }
+  else {
+    return +filtered.join('')
+  }
+};
+
 // Medium Difficulty //
 
 // Hard Difficulty //
