@@ -450,3 +450,44 @@ var summation = function (num) {
   }
   return result;
 }
+
+/* Basic Mathematical Operations: Your task is to create a function - basic_op().
+
+The function should take three arguments - operation(string/char), value1(number), value2(number). The function should return result of numbers after applying the chosen operation.
+
+Examples:
+
+basicOp('+', 4, 7)         // Output: 11
+basicOp('-', 15, 18)       // Output: -3
+basicOp('*', 5, 5)         // Output: 25
+basicOp('/', 49, 7)        // Output: 7 */
+
+function basicOp(operation, value1, value2) {
+  var final = eval(value1 + operation + value2);
+  return final;
+}
+
+function basicOp(operation, value1, value2) {
+  switch (operation) {
+    case '+':
+      return value1 + value2;
+    case '-':
+      return value1 - value2;
+    case '*':
+      return value1 * value2;
+    case '/':
+      return value1 / value2;
+    default:
+      return 0;
+  }
+}
+
+/* Function 1 - hello world: Make a simple function called greet that returns the most-famous "hello world!".
+
+Style Points
+
+Sure, this is about as easy as it gets. But how clever can you be to create the most creative hello world you can think of? What is a "hello world" solution you would want to show your friends? */
+
+function greet() {
+  return "hello world!";
+}

@@ -87,6 +87,41 @@ function FirstFactorial(num) {
   return final;
 }
 
+/* Using the JavaScript language, have the function LetterChanges(str) take the str parameter being passed and modify it using the following algorithm. Replace every letter in the string with the letter following it in the alphabet (ie. c becomes d, z becomes a). Then capitalize every vowel in this new string (a, e, i, o, u) and finally return this modified string.
+Sample Test Cases
+Input:"hello*3"
+Output:"Ifmmp*3"
+
+Input:"fun times!"
+Output:"gvO Ujnft!" */
+
+function LetterChanges(str) {
+  const alphaArr = ('abcdefghijklmnopqrstuvwxyz').split('')
+  const vowels = 'aeiou'
+  const strArr = str.split('')
+  const newWordArr = []
+  const capNewWordArr = []
+  for (let i = 0; i < strArr.length; i++) {
+    const letter = strArr[i]
+    if (alphaArr.indexOf(letter) !== -1) {
+      newWordArr.push(alphaArr[(alphaArr.indexOf(letter) + 1)])
+    }
+    else {
+      newWordArr.push(letter)
+    }
+  }
+  for (let j = 0; j < newWordArr.length; j++) {
+    const newLetter = newWordArr[j]
+    if (vowels.indexOf(newLetter) !== -1) {
+      capNewWordArr.push(newLetter.toUpperCase())
+    }
+    else {
+      capNewWordArr.push(newLetter)
+    }
+  }
+  return capNewWordArr.join('')
+}
+
 // Medium Difficulty //
 
 // Hard Difficulty //
