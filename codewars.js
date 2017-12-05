@@ -166,6 +166,77 @@ function isSquare(n) {
   return Math.sqrt(n) % 1 === 0;
 }
 
+/* Square Every Digit: Welcome. In this kata, you are asked to square every digit of a number.
+
+For example, if we run 9119 through the function, 811181 will come out.
+
+Note: The function accepts an integer and returns an integer */
+
+function squareDigits(num){
+  var str = num.toString();
+  var split = str.split("");
+  var newArr = [];
+  var finalArr = [];
+  for (var i = 0; i < split.length; i++) {
+    var number = split[i];
+    var toNumber = +number;
+    newArr.push(toNumber);
+  };
+
+  for (var j = 0; j < newArr.length; j++) {
+
+    var numberSq = (newArr[j] * newArr[j]);
+    finalArr.push(numberSq);
+
+  }
+  return +finalArr.join("");
+}
+
+function squareDigits(num){
+  var string = num.toString();
+  var results = [];
+  for (var i = 0; i < string.length; i++){
+    results[i] = string[i] * string[i];
+  }
+  return Number(results.join(''));
+};
+
+function squareDigits(num){
+  return Number(('' + num).split('').map(function (val) { return val * val;}).join(''));
+}
+
+/* Sum of Numbers: Given two integers a and b, which can be positive or negative, find the sum of all the numbers between including them too and return it. If the two numbers are equal return a or b.
+
+Note: a and b are not ordered!
+
+Examples
+
+GetSum(1, 0) == 1   // 1 + 0 = 1
+GetSum(1, 2) == 3   // 1 + 2 = 3
+GetSum(0, 1) == 1   // 0 + 1 = 1
+GetSum(1, 1) == 1   // 1 Since both are same
+GetSum(-1, 0) == -1 // -1 + 0 = -1
+GetSum(-1, 2) == 2  // -1 + 0 + 1 + 2 = 2 */
+
+function GetSum( a,b ) {
+  var sum = 0;
+  if (a <= b) {
+    for (var i = a; i <=b; i++) {
+      sum += i;
+    }
+  }
+  else if (b <= a) {
+    for (var j = b; j <=a; j++) {
+      sum +=j;
+    }
+  }
+  return sum;
+}
+
+function GetSum(a,b) {
+  return (Math.abs(a - b) + 1) * (a+b) / 2;
+}
+
 // 8 kyu problems //
 
 /* Even or Odd - Create a function that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers. */
@@ -490,4 +561,81 @@ Sure, this is about as easy as it gets. But how clever can you be to create the 
 
 function greet() {
   return "hello world!";
+}
+
+/* Count by X: Create a function with two arguments that will return a list of length (n) with multiples of (x).
+
+Assume both the given number and the number of times to count will be positive numbers greater than 0.
+
+Return the results as an array (or list in Python, Haskell or Elixir).
+
+Examples:
+
+countBy(1,10) === [1,2,3,4,5,6,7,8,9,10]
+countBy(2,5) === [2,4,6,8,10] */
+
+function countBy(x, n) {
+  var z = [];
+  for (i = 1; i <= n; i++) {
+    z.push(x * i);
+  }
+  return z;
+}
+
+/* Double Char: Given a string, you have to return a string in which each character (case-sensitive) is repeated once.
+
+doubleChar("String") ==> "SSttrriinngg"
+
+doubleChar("Hello World") ==> "HHeelllloo  WWoorrlldd"
+
+doubleChar("1234!_ ") ==> "11223344!!__  " */
+
+function doubleChar(str) {
+  var result = [];
+  var chars = str.split("");
+  for (var i = 0; i < chars.length; i++) {
+    var char = chars[i];
+    var repeatedChar = char + char;
+    result.push(repeatedChar);
+  }
+  return result.join("");
+}
+
+function doubleChar(str) {
+  return str.replace(/(.)/g, "$1$1")
+}
+
+/* Number of people in the bus
+
+There is a bus moving in the city, and it takes and drop some people in each bus stop.
+
+You are provided with a list (or array) of integer arrays (or tuples). Each integer array has two items which represent number of people get into bus (The first item) and number of people get off the bus (The second item) in a bus stop.
+
+Your task is to return number of people who are still in the bus after the last bus station (after the last array). Even though it is the last bus stop, the bus is not empty and some people are still in the bus, and they are probably sleeping there :D
+
+Take a look on the test cases.
+
+Please keep in mind that the test cases ensure that the number of people in the bus is always >= 0. So the return integer can't be negative.
+
+The second value in the first integer array is 0, since the bus is empty in the first bus stop. */
+
+var number = function(busStops){
+  var sum = null;
+  for (var i = 0; i < busStops.length; i++) {
+    var busStop = busStops[i];
+    for (var j = 0; j < busStop.length; j++) {
+      var peopleOn = busStop[0] - busStop[1];
+      sum += peopleOn;
+    }
+  }
+  return sum / 2;
+}
+
+var number = function(busStops){
+  var totalPeople = 0;
+  for (var i=0; i<busStops.length; i++) {
+    totalPeople += busStops[i][0];
+    totalPeople -= busStops[i][1];
+  }
+  return totalPeople;
 }
