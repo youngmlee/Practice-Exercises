@@ -639,3 +639,48 @@ var number = function(busStops){
   }
   return totalPeople;
 }
+
+/* You Can't Code Under Pressure #1: Code as fast as you can! You need to double the integer and return it. */
+
+function doubleInteger(i) {
+  return i * 2;
+}
+
+/* Sum Array
+
+Write a method sum (sum_array in python, SumArray in C#) that takes an array of numbers and returns the sum of the numbers. These may be integers or decimals for Ruby and any instance of Num for Haskell. The numbers can also be negative. If the array does not contain any numbers then you should return 0.
+
+Examples
+
+numbers = [1, 5.2, 4, 0, -1]
+puts sum(numbers)
+9.2
+Assumptions
+
+You can assume that you are only given numbers.
+You cannot assume the size of the array.
+You can assume that you do get an array and if the array is empty, return 0. */
+
+function sum (numbers) {
+  var sum1 = 0;
+  for (var i = 0 ; i < numbers.length ; i++) {
+    sum1 += numbers[i];
+  }
+  return sum1;
+};
+
+function sum(numbers) {
+  return numbers.reduce((a, b) => a + b, 0);
+}
+
+/* Unfinished Loop - Bug Fixing #1
+
+Oh no, Timmy's created an infinite loop! Help Timmy find and fix the bug in his unfinished For Loop! */
+
+function createArray(number){
+  var newArray = [];
+  for(var counter = 1; counter <= number; counter++) {
+    newArray.push(counter);
+  }
+  return newArray;
+}
