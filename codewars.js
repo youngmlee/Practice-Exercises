@@ -237,6 +237,50 @@ function GetSum(a,b) {
   return (Math.abs(a - b) + 1) * (a+b) / 2;
 }
 
+/* List Filtering: In this kata you will create a function that takes a list of non-negative integers and strings and returns a new list with the strings filtered out.
+
+Example
+
+filter_list([1,2,'a','b']) == [1,2]
+filter_list([1,'a','b',0,15]) == [1,0,15]
+filter_list([1,2,'aasf','1','123',123]) == [1,2,123] */
+
+function filter_list(l) {
+  var res = [];
+  for (var i = 0; i < l.length; i++) {
+    var el = l[i];
+    if (typeof l[i] === "number") {
+      res.push(l[i]);
+    }
+  }
+  return res;
+}
+
+function filter_list(l) {
+  return l.filter(function(v) {return typeof v == 'number'})
+}
+
+/* Shortest Word: x Simple, given a string of words, return the length of the shortest word(s).
+
+String will never be empty and you do not need to account for different data types. */
+
+function findShort(s){
+  var words = s.split(" ");
+  var shortL = 99999;
+  for (var i = 0; i < words.length; i++) {
+    var word = words[i];
+    var wordL = words[i].length;
+    if (wordL < shortL) {
+      shortL = wordL;
+    }
+  }
+  return shortL;
+}
+
+function findShort(s){
+  return Math.min(...s.split(" ").map (s => s.length));
+}
+
 // 8 kyu problems //
 
 /* Even or Odd - Create a function that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers. */
@@ -683,4 +727,47 @@ function createArray(number){
     newArray.push(counter);
   }
   return newArray;
+}
+
+/* How Many Lightsabers Do You Own?: Inspired by the development team at Vooza, write the function howManyLightsabersDoYouOwn that
+
+accepts the name of a programmer, and
+returns the number of lightsabers owned by that person.
+The only person who owns lightsabers is Zach, by the way. He owns 18, which is an awesome number of lightsabers. Anyone else owns 0.
+
+No starting help here -- you'll need to know how to write a function that accepts a parameter and returns a value based on that parameter.
+
+howManyLightsabersDoYouOwn("anyone else") \\ should === 0
+howManyLightsabersDoYouOwn("Zach") \\ should === 18 */
+
+function howManyLightsabersDoYouOwn(name) {
+  if (name === "Zach") {
+    return 18;
+  } else {
+    return 0;
+  }
+}
+
+function howManyLightsabersDoYouOwn(name) {
+  return name === 'Zach' ? 18 : 0;
+}
+
+/* Do I Get a Bonus?: It's bonus time in the big city! The fatcats are rubbing their paws in anticipation... but who is going to make the most money?
+
+Build a function that takes in two arguments (salary, bonus). Salary will be an integer, and bonus a boolean.
+
+If bonus is true, the salary should be multiplied by 10. If bonus is false, the fatcat did not make enough money and must receive only his stated salary.
+
+Return the total figure the individual will receive as a string prefixed with '£' (JS and Java) or '$' (C#, C++, Ruby, Clojure, Elixir, PHP and Python). */
+
+function bonusTime(salary, bonus) {
+  if (bonus === true){
+    return "£" + (salary*10).toString()
+  }else{
+    return "£" + salary.toString()
+  }
+}
+
+function bonusTime(salary, bonus) {
+  return bonus ? `£${10 * salary}` : `£${salary}`;
 }
