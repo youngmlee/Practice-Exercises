@@ -805,3 +805,43 @@ function removeExclamationMarks(s) {
 function removeExclamationMarks(s) {
   return s.replace(/!/gi, '');
 }
+
+/* DNA to RNA Conversion: Deoxyribonucleic acid, DNA is the primary information storage molecule in biological systems. It is composed of four nucleic acid bases Guanine ('G'), Cytosine ('C'), Adenine ('A'), and Thymine ('T').
+
+Ribonucleic acid, RNA, is the primary messenger molecule in cells. RNA differs slightly from DNA its chemical structure and contains no Thymine. In RNA Thymine is replaced by another nucleic acid Uracil ('U').
+
+Create a funciton which translates a given DNA string into RNA.
+
+For example:
+
+DNAtoRNA("GCAT") returns ("GCAU") */
+
+function DNAtoRNA(dna) {
+  var split1 = dna.split("T");
+  var join1 = split1.join("U");
+  return join1;
+}
+
+function DNAtoRNA(dna){
+  return dna.replace(/T/g, 'U');
+}
+
+/* Reversing Words in a String: You need to write a function that reverses the words in a given string. A word can also fit an empty string. If this is not clear enough, here are some examples:
+
+As the input may have trailing spaces, you will also need to ignore unneccesary whitespace.
+
+reverse('Hello World') === 'World Hello'
+reverse('Hi There.') === 'There. Hi' */
+
+function reverse(string){
+  var arr = [];
+  var strArr = string.split(' ');
+  for (var i = strArr.length-1; i>=0; i--) {
+    arr.push(strArr[i]);
+  }
+  return arr.join(' ');
+}
+
+function reverse(string){
+  return string.split(' ').reverse().join(' ');
+}
