@@ -845,3 +845,79 @@ function reverse(string){
 function reverse(string){
   return string.split(' ').reverse().join(' ');
 }
+
+/* How Old Will I Be 2099?: Philip's just turned four and he wants to know how old he will be in various years in the future such as 2090 or 3044. His parents can't keep up calculating this so they've begged you to help them out by writing a programme that can answer Philip's endless questions.
+
+Your task is to write a function that takes two parameters: the year of birth and the year to count years in relation to. As Philip is getting more curious every day he may soon want to know how many years it was until he would be born, so your function needs to work with both dates in the future and in the past.
+
+Provide output in this format: For dates in the future: "You are ... year(s) old." For dates in the past: "You will be born in ... year(s)." If the year of birth equals the year requested return: "You were born this very year!"
+
+"..." are to be replaced by the number, followed and proceeded by a single space. Mind that you need to account for both "year" and "years", depending on the result.
+
+Good Luck! */
+
+function  calculateAge(num1, num2) {
+  var age = num2 - num1;
+
+  if ((num2 > num1) && age === 1) {
+    return ("You are " + age + " year old.");
+  } else if (num2 > num1) {
+    return ("You are " + age + " years old.");
+  }
+
+  var yearsLeft = num1 - num2;
+  if (num1 > num2 && yearsLeft === 1) {
+    return ("You will be born in " + yearsLeft + " year.");
+  }
+  else if (num1 > num2) {
+    return ("You will be born in " + yearsLeft + " years.");
+  }
+
+  if (num1 === num2) {
+    return ("You were born this very year!");
+  }
+}
+
+
+function  calculateAge(m, n) {
+  if(m == n) return 'You were born this very year!';
+  var year = Math.abs(m-n) == 1 ? 'year' : 'years';
+  if(m < n) return "You are "+(n-m)+' '+year+' old.';
+  if(m > n) return "You will be born in "+(-n+m)+' '+year+'.';
+}
+
+/* School Paperwork: Your classmates asked you to copy some paperwork for them. You know that there are 'n' classmates and the paperwork has 'm' pages.
+
+Your task is to calculate how many blank pages do you need.
+
+Example:
+paperwork(5, 5) == 25
+Note! if n or m < 0 return 0! Waiting for translations and Feedback! Thanks! */
+
+function paperwork(n, m) {
+  if(n<0 || m<0) return 0;
+  return n*m;
+}
+
+function paperwork(n, m) {
+  return n > 0 && m > 0 ? n * m : 0
+}
+
+/* Grasshopper - Personalized Message: Personalized greeting
+
+Create a function that gives a personalized greeting. This function takes two parameters: name and owner.
+
+Use conditionals to return the proper message: case | return --- | --- name equals owner | 'Hello boss' otherwise | 'Hello guest' */
+
+function greet (name, owner) {
+  console.log("hey");
+  if (name === owner) {
+    return ("Hello boss");
+  } else if (name !== owner) {
+    return ("Hello guest");
+  }
+}
+
+function greet (name, owner) {
+  return name === owner ? 'Hello boss' :   'Hello guest';
+}
