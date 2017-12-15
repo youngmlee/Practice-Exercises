@@ -48,6 +48,42 @@ function solution(number){
   return sum;
 }
 
+/* Stop gninnipS My sdroW!: Write a function that takes in a string of one or more words, and returns the same string, but with all five or more letter words reversed (Just like the name of this Kata). Strings passed in will consist of only letters and spaces. Spaces will be included only when more than one word is present.
+
+
+Examples:
+
+spinWords( "Hey fellow warriors" ) => returns "Hey wollef sroirraw"
+spinWords( "This is a test") => returns "This is a test"
+spinWords( "This is another test" )=> returns "This is rehtona test" */
+
+function reverse(s){
+  return s.split("").reverse().join("");
+}
+
+function spinWords(str){
+  var arr = []
+  var split = str.split(' ')
+  for (let i = 0; i < split.length; i++) {
+    var word = split[i]
+    if (word.length < 5) {
+      arr.push(word)
+    }
+    else if (word.length >= 5) {
+      var reversed = reverse(word)
+      arr.push(reversed)
+    }
+  }
+  var final = arr.join(' ')
+  return final
+}
+
+function spinWords(words){
+  return words.split(' ').map(function (word) {
+    return (word.length > 4) ? word.split('').reverse().join('') : word;
+  }).join(' ');
+}
+
 // 7 kyu problems //
 
 /* Vowel Count: Return the number (count) of vowels in the given string.
