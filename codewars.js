@@ -393,6 +393,30 @@ function foldTo(n) {
   return n > 0 ? Math.max(0, Math.ceil(Math.log2(1e4 * n))) : null;
 }
 
+/* 7 Ate 9: Write a function that removes every lone 9 that is inbetween 7s.
+
+sevenAte9('79712312') => '7712312'
+sevenAte9('79797') => '777' */
+
+function sevenAte9(str){
+  var split = str.split('')
+  var finalArr = []
+  for (let i = 0; i < split.length; i++) {
+    if (split[i] === '9' && split[i-1] === '7' && split[i+1] === '7') {
+      continue;
+    }
+    else {
+      finalArr.push(split[i])
+    }
+  }
+  var final = finalArr.join('')
+  return final
+}
+
+function sevenAte9(str){
+  return str.replace(/79(?=7)/g, '7');
+}
+
 // 8 kyu problems //
 
 /* Even or Odd - Create a function that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers. */
