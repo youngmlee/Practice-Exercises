@@ -417,6 +417,34 @@ function sevenAte9(str){
   return str.replace(/79(?=7)/g, '7');
 }
 
+/* Unique Sum: Given a list of integers values, your job is to return the sum of the values; however, if the same integer value appears multiple times in the list, you can only count it once in your sum.
+
+For example:
+
+[ 1, 2, 3] ==> 6
+
+[ 1, 3, 8, 1, 8] ==> 12
+
+[ -1, -1, 5, 2, -7] ==> -1
+
+[] ==> null
+Good Luck! */
+
+function uniqueSum(lst){
+  var sum = null
+  var unique = lst.filter(function(elem, index, self) {
+    return index == self.indexOf(elem);
+  })
+  for (let i = 0; i < unique.length; i++) {
+    sum += unique[i]
+  }
+  return sum
+}
+
+function uniqueSum(lst){
+  return lst.length > 0 ? [...new Set(lst)].reduce((s,n)=> s + n, 0) : null
+}
+
 // 8 kyu problems //
 
 /* Even or Odd - Create a function that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers. */
