@@ -445,6 +445,38 @@ function uniqueSum(lst){
   return lst.length > 0 ? [...new Set(lst)].reduce((s,n)=> s + n, 0) : null
 }
 
+/* Alternate Capitalization: Given a string, capitalize the letters that occupy even indexes and odd indexes separately, and return as shown below. Index 0 will be considered even.
+
+For example, capitalize("abcdef") = ['AbCdEf', 'aBcDeF']. See test cases for more examples.
+
+The input will be a lowercase string with no spaces.
+
+Good luck! */
+
+function capitalize(s){
+  var final = []
+  var evenCap = []
+  var oddCap= []
+  for (let i = 0; i < s.length; i++) {
+    if (i % 2 === 0) {
+      evenCap.push(s[i].toUpperCase())
+      oddCap.push(s[i])
+    }
+    else if (i % 2 !== 0) {
+      evenCap.push(s[i])
+      oddCap.push(s[i].toUpperCase())
+    }
+  }
+  var evenWord = evenCap.join('')
+  var oddWord = oddCap.join('')
+  final.push(evenWord, oddWord)
+  return final
+};
+
+function capitalize(s){
+  return [0,1].map(r=>[...s].map((c,i)=>i%2===r?c.toUpperCase():c).join(''));
+};
+
 // 8 kyu problems //
 
 /* Even or Odd - Create a function that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers. */
