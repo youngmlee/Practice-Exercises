@@ -514,6 +514,49 @@ function sentencify(words) {
   return words.join(' ').replace(/^[a-z]/,m=>m.toUpperCase())+'.'
 }
 
+/* Move All Vowels: Given a string as input, move all of its vowels to the end of the string, in the same order as they were before.
+
+Vowels are (in this kata): a, e, i, o, u
+
+Note: all provided input strings are lowercase.
+
+Examples
+
+"day"    ==>  "dya"
+"apple"  ==>  "pplae" */
+
+function moveVowel(input) {
+  var vowels = []
+  var final = []
+  var split = input.split('')
+  split.forEach(function(ele) {
+    if ('aeiou'.indexOf(ele) !== -1) {
+      vowels.push(ele)
+    } else {
+      final.push(ele)
+    }
+  })
+  var realFinal = final.concat(vowels)
+  return realFinal.join('')
+}
+
+function moveVowel(input) {
+  var cs = "";
+  var vs = "";
+  for(var i=0;i<input.length;i++)
+  {
+    if("aeiouAEIOU".indexOf(input.charAt(i)) == -1)
+    {
+      cs += input.charAt(i);
+    }
+    else
+    {
+      vs += input.charAt(i);
+    }
+  }
+  return cs + vs;
+}
+
 // 8 kyu problems //
 
 /* Even or Odd - Create a function that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers. */
