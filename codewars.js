@@ -140,6 +140,27 @@ function findEvenIndex(arr) {
   return -1;
 }
 
+/* Reversed Words: Complete the solution so that it reverses all of the words within the string passed in.
+
+Example:
+
+reverseWords("The greatest victory is that which requires no battle")
+// should return "battle no requires which that is victory greatest The" */
+
+function reverseWords(str){
+  var arr = []
+  var split = str.split(' ')
+  for (let i = split.length - 1; i>=0; i--) {
+    arr.push(split[i])
+  }
+  var joined = arr.join(' ')
+  return joined
+}
+
+function reverseWords(str){
+  return str.split(' ').reverse().join(' ');
+}
+
 // 7 kyu problems //
 
 /* Vowel Count: Return the number (count) of vowels in the given string.
