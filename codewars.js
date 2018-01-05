@@ -1337,3 +1337,16 @@ function main () {
   buyHealth()
   printStatus()
 }
+
+/* Calculate Average: Write function avg which calculates average of numbers in given list.*/
+
+function find_average(array) {
+  var sum = array.reduce((a, b) => a + b, 0);
+  var avg = (sum / array.length)
+  return avg
+}
+
+function find_average(array) {
+  var sum = array.reduce((a, b) => a + b, 0);
+  return sum/array.length;
+}
