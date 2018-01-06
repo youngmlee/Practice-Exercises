@@ -1350,3 +1350,33 @@ function find_average(array) {
   var sum = array.reduce((a, b) => a + b, 0);
   return sum/array.length;
 }
+
+/* Convert number to reversed array of digits: Convert number to reversed array of digits
+
+Given a random number:
+
+C#: long;
+C++: unsigned long;
+You have to return the digits of this number within an array in reverse order.
+
+Example:
+
+348597 => [7,9,5,8,4,3] */
+
+function digitize(n) {
+  var str = n.toString();
+  var x = str.split("");
+  var newArr = [];
+  var finalArr = [];
+  x.forEach(function (thing) {
+    newArr.push(+thing);
+  });
+  for (let i = (newArr.length - 1); i >= 0; i--) {
+    finalArr.push(+newArr[i])
+  }
+  return finalArr;
+}
+
+function digitize(n){
+  return (n + '').split('').map(Number).reverse();
+}
