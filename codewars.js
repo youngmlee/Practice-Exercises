@@ -1456,3 +1456,9 @@ function howMuchILoveYou(n) {
 function removeChar(str) {
   return str.slice(1, -1);
 }
+
+/* Make UpperCase: Write function makeUpperCase. */
+
+function makeUpperCase(str) {return str.toUpperCase();}
+
+const makeUpperCase = str => str.toUpperCase();
