@@ -1487,3 +1487,19 @@ function arrayPlusArray(arr1, arr2) {
 function arrayPlusArray(arr1, arr2) {
   return arr1.concat(arr2).reduce((acc, cur) => acc + cur);
 }
+
+/* Count Odd Numbers below n: Given a number n, return the number of positive odd numbers below n, EASY!
+
+oddCount(7) //=> 3, i.e [1, 3, 5]
+oddCount(15) //=> 7, i.e [1, 3, 5, 7, 9, 11, 13]
+Expect large Inputs! */
+
+function oddCount(n){
+  let oddCount = 0;
+  for (let i = 0; i < n; i++) {
+    if (i % 2 !== 0) {
+      oddCount += 1
+    }
+  }
+  return oddCount;
+}
