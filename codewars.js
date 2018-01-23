@@ -654,6 +654,25 @@ function findSum(n) {
   return sum;
 }
 
+/* Summy: Write a function that takes a string which has integers inside it separated by spaces, and your task is to convert each integer in the string into an integer and return their sum.
+
+Example
+
+summy("1 2 3")  ==> 6
+Good luck! */
+
+function summy(stringOfInts){
+  const splitArr = stringOfInts.split(' ')
+  const numArr = splitArr.map(x => +x)
+  let sum = 0;
+  for (let i = 0; i < numArr.length; i++) {
+    sum += numArr[i];
+  }
+  return sum;
+}
+
+const summy = s => s.split(' ').map(Number).reduce((a,b)=>a+b,0)
+
 // 8 kyu problems //
 
 /* Even or Odd - Create a function that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers. */
