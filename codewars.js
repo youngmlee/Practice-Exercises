@@ -673,6 +673,33 @@ function summy(stringOfInts){
 
 const summy = s => s.split(' ').map(Number).reduce((a,b)=>a+b,0)
 
+/* Magic Sum of 3s: Details
+Solutions
+Discourse (15)
+Add to Collection|Share this kata:
+The magic sum of 3s is calculated on an array by summing up odd numbers which include the digit 3. Write a function magic_sum which accepts an array of integers and returns the sum.
+
+Example: [3, 12, 5, 8, 30, 13] results in 16 (3 + 13)
+
+If the sum cannot be calculated, 0 should be returned. */
+
+function magicSum(numbers) {
+  let sum = 0
+  if ((numbers === []) || numbers === null) {
+    return sum
+  }
+  for (let i = 0; i < numbers.length; i++) {
+    if ((numbers[i] % 2 !== 0) && (numbers[i].toString().indexOf('3') !== -1)) {
+       sum += numbers[i]
+     }
+    }
+  return sum;
+}
+
+function magicSum(a) {
+  return Array.isArray(a) ? a.reduce((a,b)=>a+((''+b).includes('3') && b%2 ? b : 0),0) : 0
+}
+
 // 8 kyu problems //
 
 /* Even or Odd - Create a function that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers. */
