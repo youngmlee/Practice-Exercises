@@ -1676,3 +1676,25 @@ function addLength(str) {
 function addLength(str){
   return str.split(' ').map(function(v){return v+' '+v.length})
 }
+
+/* Digitize: Given a non-negative integer, return an array / a list of the individual digits in order.
+
+Examples:
+
+123 => [1,2,3]
+
+1 => [1]
+
+8675309 => [8,6,7,5,3,0,9] */
+
+function digitize(n) {
+  let str = n.toString()
+  const arr = str.split('')
+  let finalArr = []
+  arr.forEach(x => finalArr.push(+x))
+  return finalArr
+}
+
+function digitize(n) {
+  return String(n).split('').map(Number);
+}
