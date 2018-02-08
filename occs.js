@@ -7,3 +7,12 @@ function findById(id, collection) {
     }
   }
 }
+
+// Define a function named forEach that takes a list (an Array) and a procedure (a Function), calling procedure on each item in the list
+
+function forEach(list, procedure) {
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i]
+    procedure(item)
+  }
+}
