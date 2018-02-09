@@ -16,3 +16,24 @@ function forEach(list, procedure) {
     procedure(item)
   }
 }
+
+/*Define a function named ransomCase that takes a message (a String) and returns a version of message with every other character uppercased.
+USAGE:
+ransomCase('I know what you did last summer.')
+// -> "I KnOw wHaT YoU DiD LaSt sUmMeR." */
+
+function ransomCase(str) {
+  var arr = []
+  for (var i = 0; i < str.length; i++) {
+    var letter = str[i]
+    var upperCased = letter.toUpperCase()
+    if (i % 2 === 0) {
+      arr.push(letter)
+    }
+    else if (i % 2 !== 0) {
+      arr.push(upperCased)
+    }
+  }
+  var joined = arr.join('')
+  return joined
+}
