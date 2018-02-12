@@ -37,3 +37,33 @@ function ransomCase(str) {
   var joined = arr.join('')
   return joined
 }
+
+/*Define a function named filter that takes a list (an Array) and a predicate (a Function) and returns a new Array containing only the items within list for which predicate returns true.
+USAGE:
+var names = ['Ron', 'Courtney', 'Celeste', 'Victor', 'Tim']
+
+filter(names, function (name) {
+ return name.startsWith('C')
+})
+// -> ["Courtney", "Celeste"]
+
+filter(names, function (name) {
+ return name.includes('i')
+})
+// -> ["Victor", "Tim"]
+
+filter(names, function (name) {
+ return name === "Ron"
+})
+// -> ["Ron"] */
+
+function filter(list, predicate) { //predicate = something that returns true//
+  var filtered = []
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i]
+    if (predicate(item)) {
+      filtered.push(item)
+    }
+  }
+  return filtered
+}
