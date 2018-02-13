@@ -67,3 +67,31 @@ function filter(list, predicate) { //predicate = something that returns true//
   }
   return filtered
 }
+
+/* Define a function named map that takes a list (an Array) and a transform (a Function) and returns a new Array containing the results of applying transform to each item in list.
+USAGE:
+var numbers = [5, 10, 15, 20]
+
+map(numbers, function (number) {
+ return number / 5
+})
+// -> [1, 2, 3, 4]
+
+map(numbers, function (number) {
+ return number * 2
+})
+// -> [10, 20, 30, 40]
+
+map(numbers, function (number) {
+ return number + 1
+})
+// -> [6, 11, 16, 21] */
+
+function map(list, transform) {
+  var arr = []
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i]
+    arr.push(transform(item]))
+  }
+  return arr
+}
