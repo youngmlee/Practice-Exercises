@@ -95,3 +95,41 @@ function map(list, transform) {
   }
   return arr
 }
+
+/* Define a function named reduce that takes a list (an Array), a combinator (a Function), and an initialValue (any type ). reduce reapplies combinator to a recomputed initialValue and each item within list until a final value is returned.
+USAGE:
+var numbers = [1, 2, 3, 4, 5]
+
+reduce(numbers, function (total, number) {
+ return total + number
+}, 0)
+// -> 15
+
+reduce(numbers, function (product, number) {
+ return product * number
+}, 1)
+// -> 120
+
+reduce(numbers, function ($numbers, number) {
+ var $number = document.createElement('li')
+ $number.textContent = number
+ $numbers.appendChild($number)
+ return $numbers
+}, document.createElement('ul'))
+
+ * <ul>
+ *  <li>1</li>
+ *  <li>2</li>
+ *  <li>3</li>
+ *  <li>4</li>
+ *  <li>5</li>
+ * </ul>
+ */
+
+function reduce(list, combinator, initialValue) {
+  var final = initialValue
+  for (var i = 0; i < list.length; i++) {
+	final = combinator(final, list[i])
+  }
+  return final
+}
