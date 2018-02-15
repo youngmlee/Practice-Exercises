@@ -133,3 +133,30 @@ function reduce(list, combinator, initialValue) {
   }
   return final
 }
+
+/* Define a function named pick that takes a model (an Object) and a list of keys (an Array of Strings), returning a new Object with only the properties listed in keys.
+USAGE:
+var person = {
+ name: 'Ron',
+ role: 'Mentor',
+ powerLevel: 9000,
+ favoriteColor: '#000'
+}
+
+pick(person, ['name', 'powerLevel'])
+ * {
+ *  name: 'Ron',
+ *  powerLevel: 9000
+ * }
+
+Hint: Review Object property access in JavaScript Basics. */
+
+function pick(model, keys) {
+  var newObj = {}
+  for (key in keys) {
+    if (keys.hasOwnProperty(key)) {
+	var value = keys[key]
+	newObj.key = value
+    }
+  return newObj;
+}
