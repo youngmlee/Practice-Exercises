@@ -160,3 +160,20 @@ function pick(model, keys) {
     }
   return newObj;
 }
+
+/* Define a function named createElement that takes a tagName (a String) and attributes (an Object) and returns an HTMLElement of the correct type including all supplied attributes.
+USAGE:
+createElement('p', { class: 'content' })
+// -> <p class="content"></p>
+
+createElement('li', { 'data-item-id': 1, class: 'item' })
+// -> <li data-item-id="1" class="item"></li>
+Hint: Review for ... in loops on MDN. */
+
+function createElement(tagName, attributes) {
+  var el = document.createElement(tagName)
+  for (var val in attributes) {
+    el.setAttribute(val, attributes[val])
+  }
+  return el
+}
