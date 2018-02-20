@@ -177,3 +177,45 @@ function createElement(tagName, attributes) {
   }
   return el
 }
+
+/* Define a function named createElement that takes a tagName (a String), some attributes (an Object) and some children (an Array) and returns an HTMLElement DOM tree.
+USAGE:
+var $article =
+ createElement('div', { 'data-id': 1234 }, [
+  createElement('h1', { class: 'title' }, []),
+  createElement('h4', { class: 'author' }, []),
+  createElement('p', { class: 'content' }, [])
+ ])
+$article
+ * <div data-id="1234">
+ *  <h1 class="title"></h1>
+ *  <h4 class="author"></h4>
+ *  <p class="content"></p>
+ * </div>
+
+
+var $list1 =
+ createElement('ul', { class: "list-group" }, [
+  createElement('li', { class: "list-group-item" }, []),
+  createElement('li', { class: "list-group-item" }, []),
+  createElement('li', { class: "list-group-item" }, [])
+ ])
+
+$list
+ * <ul class="list-group">
+ *  <li class="list-group-item"></li>
+ *  <li class="list-group-item"></li>
+ *  <li class="list-group-item"></li>
+ * </ul>
+*/
+
+function createElement(tagName, attributes, children) {
+  const el = document.createElement(tagName)
+  for (let val in attributes) {
+    el.setAttribute(val, attributes[val])
+  }
+  for (let i = 0; i < children.length; i++) {
+    el.appendChild(children[i])
+  }
+  return el
+}

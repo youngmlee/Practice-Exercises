@@ -868,6 +868,12 @@ function dontGiveMeFive(start, end) {
   return count
 }
 
+/* Sum of Angles: Find the total sum of angles in an n sided shape. N will be greater than 2. */
+
+function angle(n) {
+  return 180*(n-2);
+}
+
 // 8 kyu problems //
 
 /* Even or Odd - Create a function that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers. */
