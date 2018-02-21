@@ -219,3 +219,46 @@ function createElement(tagName, attributes, children) {
   }
   return el
 }
+
+/* Create an Object named queryString with one method named stringify. stringify takes a params Object and returns a URL query string.
+USAGE:
+queryString.stringify({ id: 1 })
+// -> "?id=1"
+
+queryString.stringify({ skill: 'JavaScript', level: 'beginner' })
+// -> "?language=JavaScript&level=beginner"
+
+queryString.stringify({})
+// -> ""
+
+queryString.stringify({ foo: 'bar', baz: 'qux', quux: 'corge' })
+// -> "?foo=bar&baz=qux&quux=corge" */
+
+// solution1 (JS6 style): //
+const queryString = {
+  stringify(object) {
+    return Object
+    .keys(object)
+    .map((key, index) => `${!index?'?':'&'}${key}=${object[key]}`)
+    .join('')
+  }
+}
+
+// solution2: //
+const queryString = {
+  stringify: function(object) {
+    const keys = Object.keys(object)
+
+    if (keys.length < 1) return ''
+    let result = []
+    for (var i = 0; i < keys.length; i++) {
+      if (i === 0) {
+        result.push('?' + keys[i] + '=' + object[keys[i]])
+      } else {
+        result.push('&' + keys[i] + '=' + object[keys[i]])
+      }
+    }
+
+    return result.join('')
+  }
+}
