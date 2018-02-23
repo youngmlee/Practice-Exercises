@@ -896,6 +896,26 @@ function solve(st,a,b){
   return join.join('');
 }
 
+/* Love vs Friendship: If　a = 1, b = 2, c = 3 ... z = 26
+
+Then l + o + v + e = 54
+
+and f + r + i + e + n + d + s + h + i + p = 108
+
+So friendship is twice stronger than love :-)
+
+The input will always be in lowercase and never be empty.*/
+
+function wordsToMarks(string){
+  const alpha = 'abcdefghijklmnopqrstuvwxyz'
+  let finalCount = null
+  for (let i = 0; i < string.length; i++) {
+    let num = alpha.indexOf(string[i]) + 1
+    finalCount += num
+  }
+  return finalCount;
+}
+
 // 8 kyu problems //
 
 /* Even or Odd - Create a function that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers. */
