@@ -220,6 +220,7 @@ function createElement(tagName, attributes, children) {
   return el
 }
 
+<<<<<<< HEAD
 /* Create an Object named queryString with one method named stringify. stringify takes a params Object and returns a URL query string.
 USAGE:
 queryString.stringify({ id: 1 })
@@ -301,4 +302,27 @@ const queryString = {
     }
     return paramsObj
   }
+=======
+/* Define a function named createElement with parameters:
+tagName (a String)
+attributes (an Object)
+children (an Array)
+createElement should return an HTMLElement DOM tree. Note: children may contain "value" data types, not just other HTMLElements.
+
+Use instanceof to determine whether a given child is a Node before appending it to its parent.*/
+
+function createElement(tagName, attributes, children) {
+  const el = document.createElement(tagName)
+  for (let val in attributes) {
+    el.setAttribute(val, attributes[val])
+  }
+  for (let i = 0; i < children.length; i++) {
+    if (children[i] instanceof Node) {
+      el.appendChild(children[i])
+    } else {
+      el.textContent += children[i]
+    }
+  }
+  return el
+>>>>>>> 31c4a03e4bc5f50bf2d5cc66012556095e3e5789
 }
