@@ -349,7 +349,7 @@ const queryString = {
   }
 }
 
-const queryString = { 
+const queryString = {
   stringify: function(object) {
     const keys = Object.keys(object)
 
@@ -364,5 +364,45 @@ const queryString = {
     }
 
     return result.join('')
+  }
+}
+
+/* Create an Object named queryString with one method named parse. parse takes a query String and returns a params Object.
+USAGE:
+queryString.parse('?id=1')
+// -> { id: '1' }
+
+queryString.parse('?skill=JavaScript&level=beginner')
+// -> { skill: 'JavaScript', level: 'beginner' }
+
+queryString.parse('')
+// -> {}
+
+queryString.parse('?')
+// -> {}
+
+queryString.parse('?foo=bar&baz=qux&quux=corge')
+// -> { foo: 'bar', baz: 'qux', quux: 'corge' } */
+
+const queryString = {
+  parse(queryStr) {
+    var paramsObj = {}
+    var props = []
+    var vals = []
+    var split = queryStr.split('&')
+    for (let i = 0; i < split.length; i++) {
+      var keyVal = split[i]
+      var splitAgain = keyVal.split('=')
+      var [key, val] = splitAgain
+      props.push(key)
+      vals.push(val)
+    }
+    for (let j = 0; j < props.length; j++) {
+      if (props[j][0] === '?') {
+        props[j] = props[j].slice(1)
+      }
+      paramsObj[props[j]] = vals[j]
+    }
+    return paramsObj
   }
 }
