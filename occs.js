@@ -406,3 +406,40 @@ const queryString = {
     return paramsObj
   }
 }
+
+/* Create a new express web server from memory (without documentation or looking at your old code) that responds at its root path with the string "Hello, World!".
+Be sure to include start and watch scripts in your package.json */
+
+//index.js//
+const express = require('express')
+const app = express()
+
+app.get('/', function(req, res) {
+  res.send('Hello, World!')
+})
+
+app.listen(3000, () => {
+  console.log('Now listening on port 3000!')
+})
+
+package.json:
+{
+  "name": "Scratch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "watch": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
