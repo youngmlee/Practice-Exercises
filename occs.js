@@ -443,3 +443,9 @@ package.json:
     "nodemon": "^1.12.1"
   }
 }
+
+// Define a function that returns itself. //
+
+function returnSelf () {
+  return returnSelf()
+}
