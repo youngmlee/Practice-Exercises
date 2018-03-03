@@ -449,3 +449,35 @@ package.json:
 function returnSelf () {
   return returnSelf()
 }
+
+/* Define a function named omit.
+SYNTAX:
+omit(target, keys)
+PARAMETERS:
+target
+The Object to omit keys from.
+keys
+An Array of Strings representing the property keys to omit from target.
+RETURN VALUE:
+A shallow copy of target excluding the properties listed by key in keys.
+USAGE:
+const teacher = {
+ name: 'Ron Perris',
+ subject: 'Software Development',
+ powerLevel: 9000
+}
+
+omit(teacher, ['subject', 'powerLevel'])
+/**
+ * {
+ *  name: 'Ron Perris'
+ * }
+ */
+
+ function omit(target, keys) {
+   return Object.keys(target)
+   .filter(key => !keys.includes(key))
+   .reduce((copy, key) =>
+   Object.assign(copy, { [key]: target[key] })
+   , {})
+ }
