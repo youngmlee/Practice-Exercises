@@ -968,6 +968,27 @@ function oddOrEven(arr) {
   return arr.reduce((a,b)=>a+b,0) % 2 ? 'odd' : 'even';
 }
 
+/* Check Three and Two: Given an array with 5 string values 'a', 'b' or 'c'. Check if the array contains three and two of the same values.
+
+For example:
+
+['a', 'a', 'a', 'b', 'b'] => true  // 3 x 'a' and 2 x 'b'
+['a', 'b', 'c', 'b', 'c'] => false // 1 x 'a', 2 x 'b' and 2 x 'c'
+['a', 'a', 'a', 'a', 'a'] => false // 5 x 'a' */
+
+function checkThreeAndTwo(array) {
+  const countArr = []
+  const aCount = array.filter(function(x) { return x === 'a'; }).length;
+  const bCount = array.filter(function(x) { return x === 'b'; }).length;
+  const cCount = array.filter(function(x) { return x === 'c'; }).length;
+  countArr.push(aCount, bCount, cCount)
+  if (countArr.indexOf(3) !== -1 && countArr.indexOf(2) !== -1) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 // 8 kyu problems //
 
 /* Even or Odd - Create a function that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers. */
