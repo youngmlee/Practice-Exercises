@@ -474,10 +474,64 @@ omit(teacher, ['subject', 'powerLevel'])
  * }
  */
 
- function omit(target, keys) {
-   return Object.keys(target)
-   .filter(key => !keys.includes(key))
-   .reduce((copy, key) =>
-   Object.assign(copy, { [key]: target[key] })
-   , {})
- }
+function omit(target, keys) {
+  return Object.keys(target)
+  .filter(key => !keys.includes(key))
+  .reduce((copy, key) =>
+  Object.assign(copy, { [key]: target[key] })
+  , {})
+}
+
+/*Define a function named defaults.
+SYNTAX:
+defaults(target, source)
+PARAMETERS:
+target
+The Object to assign default properties to.
+source
+An Object supplying default properties.
+RETURN VALUE:
+A shallow copy of target with additional properties found on source but not on target.
+USAGE:
+const celeste = {
+ fullName: 'Celeste Shuster',
+ role: 'Admissions Advisor',
+ powerLevel: 8999
+}
+
+const ron = {
+ fullName: 'Ron Perris'
+ company: 'OC|CS',
+ role: 'Founder'
+ powerLevel: 9000,
+ location: 'Newport Beach CA'
+}
+
+
+defaults(celeste, ron)
+/**
+ * {
+ *  fullName: 'Celeste Shuster',
+ *  company: 'OC|CS',
+ *  role: 'Admissions Advisor',
+ *  powerLevel: 8999,
+ *  location: 'Newport Beach CA'
+ * }
+ */
+
+function defaults(target, source) {
+  const finalObj = {}
+  const firstCopy = Object.assign(finalObj, target)
+  const targetKeysArr = Object.keys(target)
+  const sourceOmitted = omit(source, targetKeysArr)
+  const final = Object.assign(finalObj, sourceOmitted)
+  return final
+}
+
+function omit(target, keys) {
+  return Object.keys(target)
+    .filter(key => !keys.includes(key))
+    .reduce((copy, key) =>
+      Object.assign(copy, { [key]: target[key] })
+    , {})
+}
