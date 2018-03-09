@@ -587,3 +587,51 @@ function groupBy(list, key) {
     [item[key]]: item[key] in grouped ? [...grouped[item[key]], item] : [item]
   }), {})
 }
+
+/*Define a function named deepEquals.
+SYNTAX:
+deepEquals(val1, val2)
+PARAMETERS:
+val1 & val2
+The values to compare.
+RETURN VALUE:
+A Boolean confirming or refuting the deep equality of val1 and val2
+USAGE:
+deepEquals(42, 42) // true
+
+deepEquals([1, 2, 3], [1, 2, 3]) // true
+
+deepEquals({ foo: 'bar' }, { foo: 'bar' }) // true
+
+deepEquals(
+ [{ baz: 'qux' }, { corge: 'grault' }],
+ [{ baz: 'qux' }, { corge: 'grault' }]
+) // true
+*/
+
+function typeEquals(val1, val2) {
+  return Object.prototype.toString.call(val1) === Object.prototype.toString.call(val2)
+}
+
+function isObject(val) {
+  return Object.prototype.toString.call(val) === '[object Object]'
+}
+
+function isArray(val) {
+  return Array.isArray(val)
+}
+
+function deepEquals(val1, val2) {
+  if (!typeEquals(val1, val2)) return false
+  if (isArray(val1)) {
+    return val1.length === val2.length &&
+    val1.every((element, i) => deepEquals(element, val2[i]))
+  }
+  if (isObject(val1)) {
+    const keys1 = Object.keys(val1)
+    const keys2 = Object.keys(val2)
+    return keys1.length === keys2.length &&
+    keys1.every(key => deepEquals(val1[key], val2[key]))
+  }
+  return val1 === val2
+}

@@ -2170,3 +2170,30 @@ function countPositivesSumNegatives(input) {
     return [posSum, negSum];
   }
 }
+
+/* Remove anchor from URL: Complete the function/method so that it returns the url with anything after the anchor (#) removed.
+
+Examples:
+
+// returns 'www.codewars.com'
+removeUrlAnchor('www.codewars.com#about')
+
+// returns 'www.codewars.com?page=1'
+removeUrlAnchor('www.codewars.com?page=1') */
+
+function removeUrlAnchor(url){
+  const anchorIdx = url.indexOf('#')
+  if (anchorIdx !== -1) {
+    return url.slice(0, anchorIdx)
+  } else {
+    return url
+  }
+}
+
+function removeUrlAnchor(url){
+  return url.replace(/#.*/gi,"");
+}
+
+function removeUrlAnchor(url){
+  return url.split('#')[0];
+}
