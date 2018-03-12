@@ -635,3 +635,37 @@ function deepEquals(val1, val2) {
   }
   return val1 === val2
 }
+
+/*Define a function named throttle.
+SYNTAX:
+throttle(quota, timeFrame, procedure)
+PARAMETERS:
+quota
+The maximum Number of times that procedure will be called within timeFrame.
+timeFrame
+The Number milliseconds that must elapse before quota is reset. timeFrame begins the first time procedure is called.
+procedure
+A Function to forward arguments to no more than quota times within a given timeFrame.
+USAGE:
+const $button = document.querySelector('button')
+
+$button.addEventListener('click', throttle(5, 1000, event => {
+ const count = parseInt($button.textContent, 10)
+ $button.textContent = count + 1
+})) */
+
+function throttle(quota, timeFrame, procedure) {
+  let calls = 0
+  let timeout = null
+  return (...args) => {
+    if (calls === quota) return
+    if (!timeout) {
+      timeout = setTimeout(() => {
+        calls = 0
+        timeout = null
+      }, timeFrame)
+    }
+    calls += 1
+    procedure(...args)
+  }
+}
