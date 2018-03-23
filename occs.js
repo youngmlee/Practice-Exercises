@@ -679,4 +679,62 @@ function throttle(quota, timeFrame, procedure) {
     procedure(...args)
   }
 }
->>>>>>> c4cd64cfd4d300285a299aa2dd4349cb85b02a35
+
+/*Define a function named sampleSize.
+SYNTAX:
+const randomSample = sampleSize(source, size)
+PARAMETERS:
+source
+An Array of values.
+size
+The Number of elements to fill randomSample with.
+RETURN VALUE:
+randomSample
+An Array of elements randomly chosen by unique position from source.
+USAGE:
+sampleSize([1, 2, 3], 2)
+// [3, 1]
+
+sampleSize([1, 2, 3], 4)
+// [2, 3, 1]
+
+sampleSize([1, 2, 3, 1], 3)
+// [2, 1, 1] */
+
+//my solution//
+function sampleSize(source, size) {
+  const finalArr = []
+  if (size < source.length) {
+    for (let i = 1; i <= size; i++) {
+      let randomizer = (Math.random() * source.length)
+      let ceiling = (Math.ceil(randomizer) -1)
+      finalArr.push(source[ceiling])
+    }
+  }
+  else if (size > source.length) {
+    for (let i = 0; i < source.length; i++) {
+      let randomizer = (Math.random() * source.length)
+      let ceiling = (Math.ceil(randomizer) -1)
+      finalArr.push(source[ceiling])
+    }
+  }
+  return finalArr
+}
+
+//tims solution//
+function sampleSize([ ...source ], size) {
+  const sample = []
+  while (source.length && sample.length < size) {
+    const randomIndex = Math.floor(Math.random() * source.length)
+    const [ item ] = source.splice(randomIndex, 1)
+    sample.push(item)
+  }
+  return sample
+}
+
+// recursive://
+function sampleSize([ ...source ], size) {
+  if (!size) return []
+  const randomIndex = Math.floor(Math.random() * source.length)
+  return [...source.splice(randomIndex, 1), ...sampleSize(source, size - 1)]
+}
