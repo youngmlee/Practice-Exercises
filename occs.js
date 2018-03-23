@@ -220,6 +220,89 @@ function createElement(tagName, attributes, children) {
   return el
 }
 
+<<<<<<< HEAD
+/* Create an Object named queryString with one method named stringify. stringify takes a params Object and returns a URL query string.
+USAGE:
+queryString.stringify({ id: 1 })
+// -> "?id=1"
+
+queryString.stringify({ skill: 'JavaScript', level: 'beginner' })
+// -> "?language=JavaScript&level=beginner"
+
+queryString.stringify({})
+// -> ""
+
+queryString.stringify({ foo: 'bar', baz: 'qux', quux: 'corge' })
+// -> "?foo=bar&baz=qux&quux=corge" */
+
+// solution1 (JS6 style): //
+const queryString = {
+  stringify(object) {
+    return Object
+    .keys(object)
+    .map((key, index) => `${!index?'?':'&'}${key}=${object[key]}`)
+    .join('')
+  }
+}
+
+// solution2: //
+const queryString = {
+  stringify: function(object) {
+    const keys = Object.keys(object)
+
+    if (keys.length < 1) return ''
+    let result = []
+    for (var i = 0; i < keys.length; i++) {
+      if (i === 0) {
+        result.push('?' + keys[i] + '=' + object[keys[i]])
+      } else {
+        result.push('&' + keys[i] + '=' + object[keys[i]])
+      }
+    }
+
+    return result.join('')
+  }
+}
+
+/* Create an Object named queryString with one method named parse. parse takes a query String and returns a params Object.
+USAGE:
+queryString.parse('?id=1')
+// -> { id: '1' }
+
+queryString.parse('?skill=JavaScript&level=beginner')
+// -> { skill: 'JavaScript', level: 'beginner' }
+
+queryString.parse('')
+// -> {}
+
+queryString.parse('?')
+// -> {}
+
+queryString.parse('?foo=bar&baz=qux&quux=corge')
+// -> { foo: 'bar', baz: 'qux', quux: 'corge' } */
+
+const queryString = {
+  parse(queryStr) {
+    var paramsObj = {}
+    var props = []
+    var vals = []
+    var split = queryStr.split('&')
+    for (let i = 0; i < split.length; i++) {
+      var keyVal = split[i]
+      var splitAgain = keyVal.split('=')
+      var [key, val] = splitAgain
+      props.push(key)
+      vals.push(val)
+    }
+    for (let j = 0; j < props.length; j++) {
+      if (props[j][0] === '?') {
+        props[j] = props[j].slice(1)
+      }
+      paramsObj[props[j]] = vals[j]
+    }
+    return paramsObj
+  }
+
 /* Define a function named createElement with parameters:
 tagName (a String)
 attributes (an Object)
@@ -257,7 +340,10 @@ queryString.stringify({})
 queryString.stringify({ foo: 'bar', baz: 'qux', quux: 'corge' })
 // -> "?foo=bar&baz=qux&quux=corge" */
 
+<<<<<<< HEAD
 // solution1 (JS6 style):
+=======
+>>>>>>> c4cd64cfd4d300285a299aa2dd4349cb85b02a35
 const queryString = {
   stringify(object) {
     return Object
@@ -267,7 +353,10 @@ const queryString = {
   }
 }
 
+<<<<<<< HEAD
 // solution2:
+=======
+>>>>>>> c4cd64cfd4d300285a299aa2dd4349cb85b02a35
 const queryString = {
   stringify: function(object) {
     const keys = Object.keys(object)
@@ -285,3 +374,309 @@ const queryString = {
     return result.join('')
   }
 }
+<<<<<<< HEAD
+=======
+
+/* Create an Object named queryString with one method named parse. parse takes a query String and returns a params Object.
+USAGE:
+queryString.parse('?id=1')
+// -> { id: '1' }
+
+queryString.parse('?skill=JavaScript&level=beginner')
+// -> { skill: 'JavaScript', level: 'beginner' }
+
+queryString.parse('')
+// -> {}
+
+queryString.parse('?')
+// -> {}
+
+queryString.parse('?foo=bar&baz=qux&quux=corge')
+// -> { foo: 'bar', baz: 'qux', quux: 'corge' } */
+
+const queryString = {
+  parse(queryStr) {
+    var paramsObj = {}
+    var props = []
+    var vals = []
+    var split = queryStr.split('&')
+    for (let i = 0; i < split.length; i++) {
+      var keyVal = split[i]
+      var splitAgain = keyVal.split('=')
+      var [key, val] = splitAgain
+      props.push(key)
+      vals.push(val)
+    }
+    for (let j = 0; j < props.length; j++) {
+      if (props[j][0] === '?') {
+        props[j] = props[j].slice(1)
+      }
+      paramsObj[props[j]] = vals[j]
+    }
+    return paramsObj
+  }
+}
+
+/* Create a new express web server from memory (without documentation or looking at your old code) that responds at its root path with the string "Hello, World!".
+Be sure to include start and watch scripts in your package.json */
+
+//index.js//
+const express = require('express')
+const app = express()
+
+app.get('/', function(req, res) {
+  res.send('Hello, World!')
+})
+
+app.listen(3000, () => {
+  console.log('Now listening on port 3000!')
+})
+
+package.json:
+{
+  "name": "Scratch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "watch": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
+
+// Define a function that returns itself. //
+
+function returnSelf () {
+  return returnSelf()
+}
+
+/* Define a function named omit.
+SYNTAX:
+omit(target, keys)
+PARAMETERS:
+target
+The Object to omit keys from.
+keys
+An Array of Strings representing the property keys to omit from target.
+RETURN VALUE:
+A shallow copy of target excluding the properties listed by key in keys.
+USAGE:
+const teacher = {
+ name: 'Ron Perris',
+ subject: 'Software Development',
+ powerLevel: 9000
+}
+
+omit(teacher, ['subject', 'powerLevel'])
+/**
+ * {
+ *  name: 'Ron Perris'
+ * }
+ */
+
+function omit(target, keys) {
+  return Object.keys(target)
+  .filter(key => !keys.includes(key))
+  .reduce((copy, key) =>
+  Object.assign(copy, { [key]: target[key] })
+  , {})
+}
+
+/*Define a function named defaults.
+SYNTAX:
+defaults(target, source)
+PARAMETERS:
+target
+The Object to assign default properties to.
+source
+An Object supplying default properties.
+RETURN VALUE:
+A shallow copy of target with additional properties found on source but not on target.
+USAGE:
+const celeste = {
+ fullName: 'Celeste Shuster',
+ role: 'Admissions Advisor',
+ powerLevel: 8999
+}
+
+const ron = {
+ fullName: 'Ron Perris'
+ company: 'OC|CS',
+ role: 'Founder'
+ powerLevel: 9000,
+ location: 'Newport Beach CA'
+}
+
+
+defaults(celeste, ron)
+/**
+ * {
+ *  fullName: 'Celeste Shuster',
+ *  company: 'OC|CS',
+ *  role: 'Admissions Advisor',
+ *  powerLevel: 8999,
+ *  location: 'Newport Beach CA'
+ * }
+ */
+
+function defaults(target, source) {
+  const finalObj = {}
+  const firstCopy = Object.assign(finalObj, target)
+  const targetKeysArr = Object.keys(target)
+  const sourceOmitted = omit(source, targetKeysArr)
+  const final = Object.assign(finalObj, sourceOmitted)
+  return final
+}
+
+function omit(target, keys) {
+  return Object.keys(target)
+    .filter(key => !keys.includes(key))
+    .reduce((copy, key) =>
+      Object.assign(copy, { [key]: target[key] })
+    , {})
+}
+
+/*Define a function named groupBy.
+SYNTAX:
+groupBy(list, key)
+PARAMETERS:
+list
+An Array of values to group.
+key
+A String property key whose value is used to group elements of list.
+RETURN VALUE:
+An Object with property keys found in the elements of list at key.
+USAGE:
+const foods = [
+ { name: 'broccoli', type: 'veggie' },
+ { name: 'kale', type: 'veggie' },
+ { name: 'cheese', type: 'dairy' },
+ { name: 'chicken', type: 'meat' },
+ { name: 'oats', type: 'grain' },
+ { name: 'milk', type: 'dairy' },
+ { name: 'yogurt', type: 'dairy' },
+ { name: 'bacon', type: 'meat' }
+]
+
+groupBy(foods, 'type')
+/**
+ * {
+ *  veggie: [
+ *   { name: 'broccoli', type: 'veggie' },
+ *   { name: 'kale', type: 'veggie' }
+ *  ],
+ *  dairy: [
+ *   { name: 'cheese', type: 'dairy' },
+ *   { name: 'milk', type: 'dairy' },
+ *   { name: 'yogurt', type: 'dairy' }
+ *  ],
+ *  meat: [
+ *   { name: 'chicken', type: 'meat' },
+ *   { name: 'bacon', type: 'meat' }
+ *  ]
+ *  grain: [
+ *   { name: 'oats', type: 'grain' }
+ *  ]
+ * }
+*/
+
+function groupBy(list, key) {
+  return list
+  .reduce((grouped, item) => ({
+    ...grouped,
+    [item[key]]: item[key] in grouped ? [...grouped[item[key]], item] : [item]
+  }), {})
+}
+
+/*Define a function named deepEquals.
+SYNTAX:
+deepEquals(val1, val2)
+PARAMETERS:
+val1 & val2
+The values to compare.
+RETURN VALUE:
+A Boolean confirming or refuting the deep equality of val1 and val2
+USAGE:
+deepEquals(42, 42) // true
+
+deepEquals([1, 2, 3], [1, 2, 3]) // true
+
+deepEquals({ foo: 'bar' }, { foo: 'bar' }) // true
+
+deepEquals(
+ [{ baz: 'qux' }, { corge: 'grault' }],
+ [{ baz: 'qux' }, { corge: 'grault' }]
+) // true
+*/
+
+function typeEquals(val1, val2) {
+  return Object.prototype.toString.call(val1) === Object.prototype.toString.call(val2)
+}
+
+function isObject(val) {
+  return Object.prototype.toString.call(val) === '[object Object]'
+}
+
+function isArray(val) {
+  return Array.isArray(val)
+}
+
+function deepEquals(val1, val2) {
+  if (!typeEquals(val1, val2)) return false
+  if (isArray(val1)) {
+    return val1.length === val2.length &&
+    val1.every((element, i) => deepEquals(element, val2[i]))
+  }
+  if (isObject(val1)) {
+    const keys1 = Object.keys(val1)
+    const keys2 = Object.keys(val2)
+    return keys1.length === keys2.length &&
+    keys1.every(key => deepEquals(val1[key], val2[key]))
+  }
+  return val1 === val2
+}
+
+/*Define a function named throttle.
+SYNTAX:
+throttle(quota, timeFrame, procedure)
+PARAMETERS:
+quota
+The maximum Number of times that procedure will be called within timeFrame.
+timeFrame
+The Number milliseconds that must elapse before quota is reset. timeFrame begins the first time procedure is called.
+procedure
+A Function to forward arguments to no more than quota times within a given timeFrame.
+USAGE:
+const $button = document.querySelector('button')
+
+$button.addEventListener('click', throttle(5, 1000, event => {
+ const count = parseInt($button.textContent, 10)
+ $button.textContent = count + 1
+})) */
+
+function throttle(quota, timeFrame, procedure) {
+  let calls = 0
+  let timeout = null
+  return (...args) => {
+    if (calls === quota) return
+    if (!timeout) {
+      timeout = setTimeout(() => {
+        calls = 0
+        timeout = null
+      }, timeFrame)
+    }
+    calls += 1
+    procedure(...args)
+  }
+}
+>>>>>>> c4cd64cfd4d300285a299aa2dd4349cb85b02a35

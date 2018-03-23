@@ -874,28 +874,120 @@ function angle(n) {
   return 180*(n-2);
 }
 
-/* Band Name Generator: My friend wants a new band name for her band. She like bands that use the formula: 'The' + a noun with first letter capitalized.
+/* Simple String Reversal II: In this Kata, you will be given a string and two indexes. Your task is to reverse the portion of that string between those two indexes inclusive.
 
-dolphin -> The Dolphin
+solve("codewars",1,5) = "cawedors" -- elements at index 1 to 5 inclusive are "odewa". So we reverse them.
+solve("cODEWArs", 1,5) = "cAWEDOrs" -- to help visualize.
+Input will be lowercase and uppercase letters only.
 
-However, when a noun STARTS and ENDS with the same letter, she likes to repeat the noun twice and connect them together with the first and last letter, combined into one word like so (WITHOUT a 'The' in front):
+More examples in the test cases!
 
-alaska -> Alaskalaska
+Good luck! */
 
-europe -> Europeurope
+function solve(st,a,b){
+  return st.slice(0,a) + st.slice(a,b+1).split("").reverse().join("")+ st.slice(b+1,st.length);
+}
 
-Can you write a function that takes in a noun as a string, and returns her preferred band name written as a string? */
+function solve(st,a,b){
+  var slice1 = st.slice(0, a);
+  var sliceRev = st.slice(a,b + 1).split('').reverse('').join('');
+  var slice2 = st.slice(b + 1);
+  var join = (slice1 + sliceRev + slice2).split('');
+  return join.join('');
+}
 
-function bandNameGenerator(str) {
-  if (str.slice(0,1).toLowerCase() === str.slice(-1)) {
-    return str.slice(0,1).toUpperCase() + str.slice(1,str.length-1) + str;
+/* Love vs Friendship: If　a = 1, b = 2, c = 3 ... z = 26
+
+Then l + o + v + e = 54
+
+and f + r + i + e + n + d + s + h + i + p = 108
+
+So friendship is twice stronger than love :-)
+
+The input will always be in lowercase and never be empty.*/
+
+function wordsToMarks(string){
+  const alpha = 'abcdefghijklmnopqrstuvwxyz'
+  let finalCount = null
+  for (let i = 0; i < string.length; i++) {
+    let num = alpha.indexOf(string[i]) + 1
+    finalCount += num
+  }
+  return finalCount;
+}
+
+/* Area of a Circle: Complete the function circleArea so that it will return the area of a circle with the given radius. Round the returned number to two decimal places (except for Haskell). If the radius is not positive or not a number, return false.
+
+Example:
+
+circleArea(-1485.86);    //returns false
+circleArea(0);           //returns false
+circleArea(43.2673);     //returns 5881.25
+circleArea(68);          //returns 14526.72
+circleArea("number");    //returns false */
+
+var circleArea = function(radius) {
+  if (radius <= 0 || typeof radius !== "number") {
+    return false
   } else {
-    return 'The ' + str.slice(0,1).toUpperCase() + str.slice(1,str.length);
+    return +(Math.pow(radius, 2) * Math.PI).toFixed(2)
+  }
+};
+
+var circleArea = function(radius) {
+  return radius > 0 ? +(radius*radius*Math.PI).toFixed(2) : false;
+};
+
+/* Odd or Even?: Given an array of numbers, determine whether the sum of all of the numbers is odd or even.
+
+Give your answer in string format as 'odd' or 'even'.
+
+If the input array is empty consider it as: [0] (array with a zero).
+
+Example:
+
+oddOrEven([0]) returns "even"
+oddOrEven([2, 5, 34, 6]) returns "odd"
+oddOrEven([0, -1, -5]) returns "even" */
+
+function oddOrEven(array) {
+  let sum = 0
+  for (i = 0; i < array.length; i++) {
+    sum += array[i]
+  }
+  if (sum === 0) {
+    return "even"
+  } else if (sum % 2 === 0) {
+    return "even"
+  } else {
+    return "odd"
   }
 }
 
-const bandNameGenerator = s => s[0] != s[s.length-1] ? "The " + s[0].toUpperCase() + s.slice(1) :
-s[0].toUpperCase() + s.slice(1) + s.slice(1);
+function oddOrEven(arr) {
+  return arr.reduce((a,b)=>a+b,0) % 2 ? 'odd' : 'even';
+}
+
+/* Check Three and Two: Given an array with 5 string values 'a', 'b' or 'c'. Check if the array contains three and two of the same values.
+
+For example:
+
+['a', 'a', 'a', 'b', 'b'] => true  // 3 x 'a' and 2 x 'b'
+['a', 'b', 'c', 'b', 'c'] => false // 1 x 'a', 2 x 'b' and 2 x 'c'
+['a', 'a', 'a', 'a', 'a'] => false // 5 x 'a' */
+
+function checkThreeAndTwo(array) {
+  const countArr = []
+  const aCount = array.filter(function(x) { return x === 'a'; }).length;
+  const bCount = array.filter(function(x) { return x === 'b'; }).length;
+  const cCount = array.filter(function(x) { return x === 'c'; }).length;
+  countArr.push(aCount, bCount, cCount)
+  if (countArr.indexOf(3) !== -1 && countArr.indexOf(2) !== -1) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 /* Recycle! :You are having a BBQ, after the BBQ you are left with the rubbish. You have 3 recycling boxes:
 
@@ -2060,3 +2152,92 @@ Good luck! Your team knows they can count on you! */
 function formatMoney(amount){
   return '$' + amount.toFixed(2);
 }
+
+/* Pre FizzBuzz Workout #1: This is the first step to understanding FizzBuzz.
+
+Your inputs: a positive integer, n, greater than or equal to one. n is provided, you have NO CONTROL over its value.
+
+Your expected outputs: an array of positive integers from 1 to n
+
+Your job is to write an algorithm that gets you from the input to the output. */
+
+function preFizz(n) {
+  const arr = [];
+  for(let i = 1; i <= n; i++) {
+    arr.push(i);
+  }
+  return arr;
+}
+
+/* Count of Positives / Sum of Negatives: Given an array of integers.
+
+Return an array, where the first element is the count of positives numbers and the second element is sum of negative numbers.
+
+If the input array is empty or null, return an empty array:
+
+C#/Java: new int[] {} / new int[0];
+C++: std::vector<int>();
+JavaScript/CoffeeScript/PHP/Haskell: [];
+Rust: Vec::<i32>::new();
+ATTENTION!
+The passed array should NOT be changed. Read more here.
+
+For example:
+
+input [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15]
+return [10, -65]. */
+
+function countPositivesSumNegatives(input) {
+  if (input === null || input === []) {
+    return [];
+  } else {
+    let posSum = 0;
+    let negSum = 0;
+    for (i = 0; i < input.length; i++) {
+      if (input[i] > 0) {
+        posSum += 1
+      } else if (input[i] < 0) {
+        negSum += input[i]
+      }
+    }
+    return [posSum, negSum];
+  }
+}
+
+/* Remove anchor from URL: Complete the function/method so that it returns the url with anything after the anchor (#) removed.
+
+Examples:
+
+// returns 'www.codewars.com'
+removeUrlAnchor('www.codewars.com#about')
+
+// returns 'www.codewars.com?page=1'
+removeUrlAnchor('www.codewars.com?page=1') */
+
+function removeUrlAnchor(url){
+  const anchorIdx = url.indexOf('#')
+  if (anchorIdx !== -1) {
+    return url.slice(0, anchorIdx)
+  } else {
+    return url
+  }
+}
+
+function removeUrlAnchor(url){
+  return url.replace(/#.*/gi,"");
+}
+
+function removeUrlAnchor(url){
+  return url.split('#')[0];
+}
+
+/* Surface Area and Volume of a Box: Write a function that returns the total surface area and volume of a box as an array: [area, volume]. */
+
+function getSize(width, height, depth) {
+  return [2*width*height + 2*width*depth + 2*height*depth, width * height * depth]
+};
+
+const getSize = (w, h, d) => [
+  (w * h + w * d + h * d) * 2,
+  w * h * d
+];
