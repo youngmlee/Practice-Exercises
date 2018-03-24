@@ -738,3 +738,34 @@ function sampleSize([ ...source ], size) {
   const randomIndex = Math.floor(Math.random() * source.length)
   return [...source.splice(randomIndex, 1), ...sampleSize(source, size - 1)]
 }
+
+/* Define a function named shuffle.
+SYNTAX:
+const shuffled = shuffle(list)
+PARAMETERS:
+list
+An Array of values.
+RETURN VALUE:
+A new Array containing all values of list, but in a random order.
+USAGE:
+const numbers = [1, 2, 3, 4]
+
+shuffle(numbers)
+// [3, 2, 4, 1] */
+
+function shuffle([ ...list ]) {
+  const shuffled = []
+  while (list.length) {
+    const randomIndex = Math.floor(Math.random() * list.length)
+    const [ item ] = list.splice(randomIndex, 1)
+    shuffled.push(item)
+  }
+  return shuffled
+}
+
+// recursive: //
+function shuffleR([ ...list ]) {
+  if (!list.length) return []
+  const randomIndex = Math.floor(Math.random() * list.length)
+  return [...list.splice(randomIndex, 1), ...shuffleR(list)]
+}
