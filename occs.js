@@ -769,3 +769,47 @@ function shuffleR([ ...list ]) {
   const randomIndex = Math.floor(Math.random() * list.length)
   return [...list.splice(randomIndex, 1), ...shuffleR(list)]
 }
+
+/* Define a function named compose.
+SYNTAX:
+const composed = compose(fn1[, ...fnN])
+PARAMETERS:
+fn1[, ...fnN]
+One or more Functions.
+RETURN VALUE:
+A composed function that, when called, forwards its argument to the last Function, piping its return value through the remaining Functions from right to left.
+USAGE:
+const double = x => x * 2
+
+const quarter = x => x / 4
+
+const square = x => x * x
+
+const composed = compose(square, quarter, double)
+
+composed(2) // 1
+
+composed(4) // 2
+
+composed(5) // 6.25
+
+composed(1) // 0.25 */
+
+function compose(...theArgs) {
+  return function(num) {
+    let val = num
+    for (let i = theArgs.length-1; i >= 0; i--) {
+      let fxn = theArgs[i]
+      val = fxn(val)
+    }
+    return val
+  }
+}
+
+function compose(...fns) {
+  return function(x) {
+    return fns.reduceRight((value, fn) {
+      return fn(value)
+    }, x)
+  }
+}
