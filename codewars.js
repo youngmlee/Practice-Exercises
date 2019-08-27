@@ -32,6 +32,27 @@ var moveZeros = function (arr) {
 
 // 6 kyu problems //
 
+/*Find the Odd Int
+
+Given an array, find the int that appears an odd number of times.
+
+There will always be only one integer that appears an odd number of times.
+*/
+
+function findOdd(A) {
+  var obj = {};
+  A.forEach(function(el){
+    obj[el] ? obj[el]++ : obj[el] = 1;
+  });
+  
+  for(prop in obj) {
+    if(obj[prop] % 2 !== 0) return Number(prop);
+  }
+}
+
+const findOdd = (xs) => xs.reduce((a, b) => a ^ b);
+
+
 /* Multiples of 3 or 5: If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
 
 Finish the solution so that it returns the sum of all the multiples of 3 or 5 below the number passed in.
