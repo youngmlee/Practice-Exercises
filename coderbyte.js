@@ -2,6 +2,42 @@
 
 // Easy Difficulty //
 
+/* Letter Changes
+
+Challenge
+Have the function LetterChanges(str) take the str parameter being passed and modify it using the following algorithm. Replace every letter in the string with the letter following it in the alphabet (ie. c becomes d, z becomes a). Then capitalize every vowel in this new string (a, e, i, o, u) and finally return this modified string.
+Sample Test Cases
+Input:"hello*3"
+
+Output:"Ifmmp*3"
+
+
+Input:"fun times!"
+
+Output:"gvO Ujnft!" */
+
+function LetterChanges(str) {
+  
+  str = str.trim().toLowerCase();
+  var len = str.length;
+  var newStr = '';
+  
+  for (var i = 0; i < len; i++) {
+    if (/[a-ce-gi-mo-su-y]/.test(str[i])) {
+      newStr += String.fromCharCode(((str[i].charCodeAt(0) - 18) % 26) + 97)    
+    }
+    else if (/[zdhnt]/.test(str[i])) {
+        newStr += String.fromCharCode(((str[i].charCodeAt(0) - 18) % 26) + 65);
+    }
+    else {
+     newStr += str[i]; 
+    }
+  }
+  return newStr; 
+         
+}
+LetterChanges(readline());
+
 /* Longest Word: Using the JavaScript language, have the function LongestWord(sen) take the sen parameter being passed and return the largest word in the string. If there are two or more words that are the same length, return the first word from the string with that length. Ignore punctuation and assume sen will not be empty.
 Sample Test Cases
 Input:"fun&!! time"
