@@ -2,6 +2,69 @@
 
 // Easy Difficulty //
 
+/* Same Tree
+
+Given two binary trees, write a function to check if they are the same or not.
+
+Two binary trees are considered the same if they are structurally identical and the nodes have the same value.
+
+Example 1:
+
+Input:     1         1
+          / \       / \
+         2   3     2   3
+
+        [1,2,3],   [1,2,3]
+
+Output: true
+Example 2:
+
+Input:     1         1
+          /           \
+         2             2
+
+        [1,2],     [1,null,2]
+
+Output: false
+Example 3:
+
+Input:     1         1
+          / \       / \
+         2   1     1   2
+
+        [1,2,1],   [1,1,2]
+
+Output: false */
+
+class Solution {
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        Queue<TreeNode> queue = new LinkedList<>();
+        if (p == null && q == null)
+            return true;
+        else if (p == null || q == null)
+            return false;
+        if (p != null && q != null) {
+            queue.offer(p);
+            queue.offer(q);
+        }
+        while (!queue.isEmpty()) {
+            TreeNode first = queue.poll();
+            TreeNode second = queue.poll();
+            if (first == null && second == null)
+                continue;
+            if (first == null || second == null)
+                return false;
+            if (first.val != second.val)
+                return false;
+            queue.offer(first.left);
+            queue.offer(second.left);
+            queue.offer(first.right);
+            queue.offer(second.right);
+        }
+        return true;
+    }
+}
+
 /* Valid Parentheses
 
 Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
