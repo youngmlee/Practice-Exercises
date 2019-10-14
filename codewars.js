@@ -184,6 +184,36 @@ function reverseWords(str){
 
 // 7 kyu problems //
 
+/* The Baum-Sweet Sequence
+
+Wikipedia: The Baum–Sweet sequence is an infinite automatic sequence of 0s and 1s defined by the rule:
+
+bn = 1 if the binary representation of n contains no block of consecutive 0s of odd length;
+bn = 0 otherwise;
+
+for n ≥ 0.
+
+Define a generator function baumSweet that sequentially generates the values of this sequence.
+
+It will be tested for up to 1 000 000 values.
+
+Note that the binary representation of 0 used here is not 0 but the empty string ( which does not contain any blocks of consecutive 0s ). */
+
+function* baumSweet() {
+  let n = -1;
+  const MAX_SEQ_LENGTH = 1000000;
+  
+  while (++n < MAX_SEQ_LENGTH) {
+    yield (n > 0 ? n : 1)
+      .toString(2)
+      .split('1')
+      .filter(v => v.length % 2 !== 0)
+      .length === 0
+        ? 1
+        : 0;
+  }
+}
+
 /* How many days are we represented in a foreign country?
 
 How many days are we represented in a foreign country?
