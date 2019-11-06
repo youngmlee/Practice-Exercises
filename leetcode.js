@@ -2,6 +2,23 @@
 
 // Easy Difficulty //
 
+/* Power of Four
+
+Given an integer (signed 32 bits), write a function to check whether it is a power of 4.
+
+Example 1:
+
+Input: 16
+Output: true
+Example 2:
+
+Input: 5
+Output: false */
+
+var isPowerOfFour = function(num) {
+  return /^10*$/.test(num.toString(4));
+};
+
 /* Maximum Subarray
 
 Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
