@@ -1674,6 +1674,18 @@ var fizzify = fizzbuzz;
 
 // 8 kyu problems //
 
+/* 5 without numbers !!
+
+Write a function that always returns 5
+
+Sounds easy right? Just bear in mind that you can't use any of the following characters: 0123456789*+-/
+
+Good luck :) */
+
+function unusualFive() {
+  return 'Young'.length
+}
+
 /* Draw stairs
 given a number n, draw stairs with 'I' n tall and n wide, with the tallest in the top left. Example (with - to represent spaces; DO NOT USE THEM IN THE SOLUTIONS! USE SPACES IN SOLUTION! the "-"s are for clarity.): draw_stairs(3) == '''I\n_I\n__I'''
 
