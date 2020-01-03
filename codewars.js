@@ -1837,6 +1837,28 @@ var fizzify = fizzbuzz;
 
 // 8 kyu problems //
 
+/* Squash the bugs
+
+Simple challenge - eliminate all bugs from the supplied code so that the code runs and outputs the expected value. Output should be the length of the longest word, as a number.
+
+There will only be one 'longest' word. */
+
+function findLongest(str) {
+  var spl = str.split(" "),
+      longest = 0;
+  
+  for (var i in spl) {
+    if (spl[i].length > longest) {
+      longest = spl[i].length;
+    }
+  }
+
+  return longest;
+}
+
+const findLongest = s => Math.max(...s.split(" ").map(x => x.length));
+
+
 /* For UFC Fans (Total Beginners): Conor McGregor vs George Saint Pierre
 
 This is a beginner friendly kata especially for UFC/MMA fans.
